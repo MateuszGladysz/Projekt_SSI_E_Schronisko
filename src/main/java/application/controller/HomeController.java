@@ -22,4 +22,9 @@ public class HomeController {
         return "login";
     }
 
+    @RequestMapping(value = "/register", method = {RequestMethod.GET, RequestMethod.POST})
+    public String register() {
+        return "register";
+    }
+
 }
