@@ -1,0 +1,26 @@
+.tip{
+    font-size : 15px;
+}
+tip header{
+    font-size : 100px;
+    text-align : center;
+    font-family : Impact;
+
+}
+tip h1{
+    font-size : 30px;
+    margin-top : 30px;
+    text-align : center;
+    font-family : Impact;
+    font-weight:lighter;
+
+}
+
+tip h2{
+        margin-top : 30px;
+        font-size : 30px;
+        text-align : center;
+        font-family : Impact;
+        font-weight:lighter;
+
+}

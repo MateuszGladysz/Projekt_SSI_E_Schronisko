@@ -23,8 +23,9 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/register", method = {RequestMethod.GET, RequestMethod.POST})
-    public String register() {
-        return "register";
-    }
+    public String register() {return "register"; }
+
+    @RequestMapping(value = "/tips", method = {RequestMethod.GET, RequestMethod.POST})
+    public String tips() {return "tips"; }
 
 }
