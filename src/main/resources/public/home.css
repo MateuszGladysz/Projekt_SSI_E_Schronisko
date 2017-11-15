@@ -1,12 +1,24 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 200px;
+}
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 200px;
+  color: white;
+  background-color: #555;
+  text-align: center;
+}
 
+.all-footer{
     background-color: #555;
-    color: white;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    text-align: center;
 }
 
 footer h3{
@@ -24,6 +36,8 @@ footer iframe {
     width:100%;
     position:relative;
     height:140px;
+     background-color: #555;
+
 }
 .sm{
     list-style:none;
