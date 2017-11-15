@@ -28,4 +28,13 @@ public class HomeController {
     @RequestMapping(value = "/tips", method = {RequestMethod.GET, RequestMethod.POST})
     public String tips() {return "tips"; }
 
+    @RequestMapping(value = "/psy", method = {RequestMethod.GET, RequestMethod.POST})
+    public String psy() {return "psy"; }
+
+    @RequestMapping(value = "/koty", method = {RequestMethod.GET, RequestMethod.POST})
+    public String koty() {return "koty"; }
+
+    @RequestMapping(value = "/inne", method = {RequestMethod.GET, RequestMethod.POST})
+    public String inne() {return "inne"; }
+
 }
