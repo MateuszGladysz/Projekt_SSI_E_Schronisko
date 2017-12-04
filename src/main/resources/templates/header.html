@@ -26,7 +26,8 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li th:if ="${session.loggedUser} != null"><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+            <li th:unless ="${session.loggedUser}  != null"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
     </div>
 </nav>

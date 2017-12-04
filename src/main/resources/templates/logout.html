@@ -20,21 +20,7 @@
 
   <div class="container">
 
-    <form class="form-signin" method="post">
-      <h2 class="form-signin-heading">Zaloguj się.</h2>
-
-      <label for="userEmail" class="sr-only">Email</label>
-      <input type="email" id="userEmail" class="form-control"
-             name ="userEmail" placeholder="E-mail" th:required="required"></input>
-
-      <label for="userPassword" class="sr-only">Hasło</label>
-      <input type="password" id="userPassword" class="form-control"
-             name ="userPassword" placeholder="Hasło" th:required="required"></input>
-
-      <button class="btn btn-lg btn-dark btn-block" type="submit">Zaloguj</button>
-
-    </form>
-    <h6 data-th-text="${loginFailureMessage}" style="color : red"></h6>
+    <h1>Wylogowano !!!</h1>
 
   </div> <!-- /container -->
  <div th:replace="footer :: footer">

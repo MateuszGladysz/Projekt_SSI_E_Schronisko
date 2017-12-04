@@ -22,4 +22,19 @@ public class UserAccountService {
 
         return "nie dodano";
     }
+
+    public String loginUser(String userEmail, String userPassword){
+
+        System.out.println(userEmail);
+        System.out.println(userPassword);
+
+
+            if(userAccountRepo.findOneByUserEmail(userEmail) != null){
+                UserAccount userToLogin = userAccountRepo.findOneByUserEmail(userEmail);
+                if(userToLogin.getUserPassword().equals(userPassword)){
+                    return "zalogowano";
+                } else return "niezalogowano";
+            }else return "brak konta z tym mailem";
+        }
+
 }
