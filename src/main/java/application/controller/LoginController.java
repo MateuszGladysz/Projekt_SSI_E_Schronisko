@@ -21,14 +21,14 @@ public class LoginController {
     @Autowired
     private HttpSession session;
 
-    @RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/logout", method = {RequestMethod.GET})
     public String logout() {
 
         session.invalidate();
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login() {return "login"; }
 
     @RequestMapping(method = {RequestMethod.POST})

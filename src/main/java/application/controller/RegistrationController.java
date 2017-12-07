@@ -19,7 +19,7 @@ public class RegistrationController {
     @Autowired
     private HttpSession session;
 
-    @RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/logout", method = {RequestMethod.GET})
     public String logout() {
 
         session.invalidate();
