@@ -26,14 +26,10 @@ public class RegistrationController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/register", method = {RequestMethod.GET, RequestMethod.POST})
-    public String register() {return "register"; }
-
-
     @RequestMapping(method = {RequestMethod.POST})
     public String submit(UserAccount userAcc){
 
-
+        System.out.println(userAcc.getUserCity());
         if(userAcc != null){
             System.out.println(userAccountServ.addUser(userAcc));
             return "redirect:/";

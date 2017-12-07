@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <title>Rejestracja E-Schronisko</title>
-    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
@@ -20,7 +20,7 @@
 
 <div class="container">
 
-    <form class="form-signin" method="post">
+    <form class="form-signin" method="post" accept-charset="utf-8" >
         <h2 class="form-signin-heading">Rejestracja</h2>
 
 
@@ -31,6 +31,26 @@
         <label for="userLastName" class="sr-only">Nazwisko</label>
         <input type="text" id="userLastName" class="form-control"
                name ="userLastName" placeholder="Nazwisko" th:required="required"></input>
+
+        <label for="userAddress" class="sr-only">Adres</label>
+        <input type="text" id="userAddress" class="form-control"
+               name ="userAddress" placeholder="Adres" th:required="required"></input>
+
+        <label for="userPostCode" class="sr-only">Kod pocztowy</label>
+        <input type="text" id="userPostCode" class="form-control"
+               name ="userPostCode" placeholder="Kod pocztowy __-___" th:required="required"></input>
+
+        <label for="userCity" class="sr-only">Miasto</label>
+        <input type="text" id="userCity" class="form-control"
+               name ="userCity" placeholder="Miasto" th:required="required"></input>
+
+        <label for="userPhone" class="sr-only">Telefon</label>
+        <input type="number" id="userPhone" class="form-control"
+               name ="userPhone" placeholder="Telefon" th:required="required"></input>
+
+        <label for="workerCode" class="sr-only">Kod pracownika</label>
+        <input type="text" id="workerCode" class="form-control"
+               name ="workerCode" placeholder="Kod pracownika(tylko dla pracowników schroniska)"></input>
 
         <label for="userEmail" class="sr-only">Email</label>
         <input type="email" id="userEmail" class="form-control"

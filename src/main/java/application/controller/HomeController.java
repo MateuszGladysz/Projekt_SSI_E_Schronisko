@@ -24,31 +24,31 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/logout", method = {RequestMethod.GET})
     public String logout() {
 
         session.invalidate();
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login() {
         return "login";
     }
 
-    @RequestMapping(value = "/register", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String register() {return "register"; }
 
-    @RequestMapping(value = "/tips", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/tips", method = {RequestMethod.GET})
     public String tips() {return "tips"; }
 
-    @RequestMapping(value = "/psy", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/psy", method = {RequestMethod.GET})
     public String psy() {return "psy"; }
 
-    @RequestMapping(value = "/koty", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/koty", method = {RequestMethod.GET})
     public String koty() {return "koty"; }
 
-    @RequestMapping(value = "/inne", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/inne", method = {RequestMethod.GET})
     public String inne() {return "inne"; }
 
 }

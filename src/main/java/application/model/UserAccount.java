@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name ="userAccount")
+@Table(name = "userAccount")
 public class UserAccount {
 
     @Id
@@ -21,6 +21,21 @@ public class UserAccount {
 
     @NotNull
     private String userLastName;
+
+    @NotNull
+    private String userAddress;
+
+    @NotNull
+    private String userPostCode;
+
+    @NotNull
+    private String userCity;
+
+    @NotNull
+    private long userPhone;
+
+    @NotNull
+    private String workerCode;
 
     @NotNull
     private String userEmail;
@@ -80,5 +95,45 @@ public class UserAccount {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public String getUserPostCode() {
+        return userPostCode;
+    }
+
+    public String getUserCity() {
+        return userCity;
+    }
+
+    public long getUserPhone() {
+        return userPhone;
+    }
+
+    public String getWorkerCode() {
+        return workerCode;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public void setUserPostCode(String userPostCode) {
+        this.userPostCode = userPostCode;
+    }
+
+    public void setUserCity(String userCity) {
+        this.userCity = userCity;
+    }
+
+    public void setUserPhone(long userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public void setWorkerCode(String workerCode) {
+        this.workerCode = workerCode;
     }
 }
