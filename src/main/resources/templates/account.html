@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Konto użytkownika E-Schronisko</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+    <link rel="stylesheet" th:href="@{/home.css}" />
+    <link rel="stylesheet" th:href="@{/login1.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script th:inline="javascript">
+     /*<![CDATA[*/
+        function addPasswordToModel(){
+
+
+        }
+
+     /*]]>*/
+    </script>
+
+</head>
+
+<body>
+
+<div th:replace="header :: header">
+
+</div>
+
+<div class="container">
+
+    <form class="form-signin" method="post" accept-charset="utf-8" >
+        <h2 class="form-signin-heading">Twoje Dane</h2>
+
+
+        <label for="userFirstName" class="sr-only">Imię</label>
+        <input type="text" id="userFirstName" class="form-control"
+               name ="userFirstName" th:placeholder="${session.loggedUser.getUserFirstName()}" ></input>
+
+        <label for="userLastName" class="sr-only">Nazwisko</label>
+        <input type="text" id="userLastName" class="form-control"
+               name ="userLastName" th:placeholder="${session.loggedUser.getUserLastName()}" ></input>
+
+        <label for="userAddress" class="sr-only">Adres</label>
+        <input type="text" id="userAddress" class="form-control"
+               name ="userAddress" th:placeholder="${session.loggedUser.getUserAddress()}" ></input>
+
+        <label for="userPostCode" class="sr-only">Kod pocztowy</label>
+        <input type="text" id="userPostCode" class="form-control"
+               name ="userPostCode" th:placeholder="${session.loggedUser.getUserPostCode()}" ></input>
+
+        <label for="userCity" class="sr-only">Miasto</label>
+        <input type="text" id="userCity" class="form-control"
+               name ="userCity" th:placeholder="${session.loggedUser.getUserCity()}" ></input>
+
+        <label for="userPhone" class="sr-only">Telefon</label>
+        <input type="number" id="userPhone" class="form-control"
+               name ="userPhone" th:placeholder="${session.loggedUser.getUserPhone()}" ></input>
+
+        <label for="userEmail" class="sr-only">Email</label>
+        <input type="email" id="userEmail" class="form-control"
+               name ="userEmail" th:placeholder="${session.loggedUser.getUserEmail()}" ></input>
+
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Aktualizuj</button>
+
+        <h2 class="form-signin-heading">Hasła logowania</h2>
+
+        <label for="userPassword" class="sr-only">Obecne hasło</label>
+        <input type="password" id="userPassword" class="form-control"
+               name ="userPassword" placeholder="Obecne hasło" ></input>
+
+        <label for="userNewPassword" class="sr-only">Nowe hasło</label>
+        <input type="password" id="userNewPassword" class="form-control"
+               name="userNewPassword" placeholder="Nowe hasło" ></input>
+
+        <label for="userNewPassword2" class="sr-only">Powtórzone nowe hasło</label>
+        <input type="password" id="userNewPassword2" class="form-control"
+               name="userNewPassword2" placeholder="Powtórz nowe hasło" ></input>
+
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Aktualizuj</button>
+
+    </form>
+
+</div>
+
+<div th:replace="footer :: footer">
+</div>
+</body>
+</html>

@@ -37,4 +37,17 @@ public class UserAccountService {
             }else return "brak konta z tym mailem";
         }
 
+     public UserAccount findUserByEmail(String email){
+
+        UserAccount userAcc = userAccountRepo.findOneByUserEmail(email);
+
+        return userAcc;
+     }
+
+     public String editUserAccount(UserAccount userAcc){
+
+         userAccountRepo.save(userAcc);
+         return "";
+     }
+
 }

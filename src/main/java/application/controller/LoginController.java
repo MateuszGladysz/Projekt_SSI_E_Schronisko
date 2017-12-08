@@ -35,13 +35,13 @@ public class LoginController {
     public String submit(UserAccount userAcc, Map<String,Object> model){
 
         String message;
-
+        UserAccount userToSession;
         model.put("loginFailureMessage","");
         if(userAcc != null){
             message = userAccountServ.loginUser(userAcc.getUserEmail(),userAcc.getUserPassword());
-
+            userToSession = userAccountServ.findUserByEmail(userAcc.getUserEmail());
             if(message.equals("zalogowano")){
-                session.setAttribute("loggedUser", userAcc);
+                session.setAttribute("loggedUser", userToSession);
                 return "redirect:/";
             }
             if(message.equals("niezalogowano")){
