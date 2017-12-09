@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class AnimalService {
@@ -18,14 +19,19 @@ public class AnimalService {
     public void addAnimal(Animal animal, MultipartFile photo) throws IOException{
 
         animal.setDonation(0);
-        animal.setPhoto("Projekt_SSI_E_Schronisko\\images\\" + animal.getName() + ".jpg");
+        animal.setPhoto(animal.getName() + ".jpg");
 
         Animal savedAnimal= animalRepository.save(animal);
 
-        String destination = "D:\\projekt_ssi\\Projekt_SSI_E_Schronisko\\images\\"+savedAnimal.getName()+".jpg";
+        String destination = "D:\\projekt_ssi\\Projekt_SSI_E_Schronisko\\src\\main\\resources\\public\\images\\"+savedAnimal.getName()+".jpg";
 
         photo.transferTo(new File(destination));
 
+    }
+
+    public List<Animal> getAllAnimals(){
+
+        return (List)animalRepository.findAll();
     }
 
 
