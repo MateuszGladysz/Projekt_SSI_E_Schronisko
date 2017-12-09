@@ -3,14 +3,17 @@ package application.controller;
 
 import application.model.UserAccount;
 import application.service.UserAccountService;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/account")
@@ -30,21 +33,38 @@ public class AccountController {
     }
 
     @RequestMapping(method = {RequestMethod.POST})
-    public String submit(@Valid UserAccount userAcc, BindingResult result){
+    public String submit(@Valid UserAccount userAcc, BindingResult result,
+                         Map<String, Object> model, HttpServletRequest request) {
 
-        UserAccount userFromSession = (UserAccount) session.getAttribute("loggedUser");
+        model.put("changePasswordMessage", "");
+        String message;
 
+        message = userAccountServ.editUserAccount(userAcc, request.getParameter("userNewPassword"),
+                request.getParameter("userNewPassword2"));
 
-        if(!userAcc.getUserFirstName().equals("")) userFromSession.setUserFirstName(userAcc.getUserFirstName());
-        if(!userAcc.getUserLastName().equals("")) userFromSession.setUserLastName(userAcc.getUserLastName());
-        if(!userAcc.getUserAddress().equals("")) userFromSession.setUserAddress(userAcc.getUserAddress());
-        if(!userAcc.getUserPostCode().equals("")) userFromSession.setUserPostCode(userAcc.getUserPostCode());
-        if(!userAcc.getUserCity().equals("")) userFromSession.setUserCity(userAcc.getUserCity());
-        if(!userAcc.getUserEmail().equals("")) userFromSession.setUserEmail(userAcc.getUserEmail());
+        System.out.println(userAcc.getUserPassword());
 
+        if (message.equals("changePasswordGood")) {
 
-        session.setAttribute("loggedUser",userFromSession);
-        userAccountServ.editUserAccount(userFromSession);
+            model.put("changePasswordMessage", "Hasło zostało zmienione");
+            return "/account";
+        }
+        if (message.equals("noMatchPasswords")) {
+
+            model.put("changePasswordMessage", "Błędne powtórzenie hasła");
+            return "/account";
+        }
+        if (message.equals("toShortPasswords")) {
+
+            model.put("changePasswordMessage", "Nowe hasło powinno mieć od 6 do 14 znaków");
+            return "/account";
+        }
+
+        if (message.equals("badCurrentPassword")) {
+
+            model.put("changePasswordMessage", "Obecne hasło nie prawidłowe");
+            return "/account";
+        }
 
         return "/account";
 

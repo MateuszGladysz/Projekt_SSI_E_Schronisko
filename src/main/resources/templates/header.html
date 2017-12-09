@@ -26,7 +26,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li th:if ="${session.loggedUser} != null"><a href="/account"><span class="glyphicon glyphicon-user"></span> Moje konto</a></li>
-            <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>
+            <li th:unless ="${session.loggedUser}  != null"><a href="/register"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>
             <li th:if ="${session.loggedUser} != null"><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Wyloguj</a></li>
             <li th:unless ="${session.loggedUser}  != null"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Zaloguj</a></li>
         </ul>

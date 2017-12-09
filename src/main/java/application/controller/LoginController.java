@@ -40,15 +40,15 @@ public class LoginController {
         if(userAcc != null){
             message = userAccountServ.loginUser(userAcc.getUserEmail(),userAcc.getUserPassword());
             userToSession = userAccountServ.findUserByEmail(userAcc.getUserEmail());
-            if(message.equals("zalogowano")){
+            if(message.equals("logged")){
                 session.setAttribute("loggedUser", userToSession);
                 return "redirect:/";
             }
-            if(message.equals("niezalogowano")){
+            if(message.equals("notLogged")){
                 model.put("loginFailureMessage","Błędny login lub hasło");
                 return "/login";
             }
-            if(message.equals("brak konta z tym mailem")){
+            if(message.equals("NoAccountWithThisEmail")){
                 model.put("loginFailureMessage","Brak konta o podanym adresie E-mail");
                 return "/login";
             }
