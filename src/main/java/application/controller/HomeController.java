@@ -51,4 +51,7 @@ public class HomeController {
     @RequestMapping(value = "/inne", method = {RequestMethod.GET})
     public String inne() {return "inne"; }
 
+    @RequestMapping(value = "/worker", method = {RequestMethod.GET})
+    public String worker() {return "worker"; }
+
 }

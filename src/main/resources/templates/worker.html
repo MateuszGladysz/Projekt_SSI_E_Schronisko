@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Rejestracja E-Schronisko</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+    <link rel="stylesheet" th:href="@{/home.css}" />
+    <link rel="stylesheet" th:href="@{/login1.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:replace="header :: header">
+
+</div>
+
+<div class="container">
+
+    <form class="form-signin" method="get" action="worker/addAnimal">
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Dodaj zwierzaka</button>
+    </form>
+</div>
+
+    <div class="container">
+    <form class="form-signin" method="get" action="worker/addMoney">
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Dodaj przelew</button>
+    </form>
+
+
+
+
+
+
+</div>
+
+<div th:replace="footer :: footer">
+</div>
+</body>
+</html>
