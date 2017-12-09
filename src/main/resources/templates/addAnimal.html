@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Dodaj zwierzaka E-Schronisko</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+    <link rel="stylesheet" th:href="@{/home.css}" />
+    <link rel="stylesheet" th:href="@{/login1.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div th:replace="header :: header">
+
+</div>
+
+<div class="container">
+
+    <form class="form-signin" method="post" accept-charset="utf-8" enctype="multipart/form-data" action="addAnimal">
+        <h2 class="form-signin-heading">Dodawanie Zwierzaka</h2>
+
+        <label for="name" class="sr-only">Imię</label>
+        <input type="text" id="name" class="form-control"
+               name ="name" placeholder="Imie" th:required="required"></input>
+
+        <label for="type" class="sr-only">Typ zwierzaka</label>
+        <input type="text" id="type" class="form-control"
+               name ="type" placeholder="Typ zwierzaka" th:required="required"></input>
+
+        <label for="description" class="sr-only">Opis</label>
+        <textarea type="text" id="description" class="form-control"
+               name ="description" placeholder="Opis" th:required="required"></textarea>
+
+        <label for="file" class="sr-only">Zdjecie zwierzaka</label>
+        <input type="file" id="file"
+               name ="file" placeholder="Zdjecie" th:required="required"></input>
+
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Dodaj</button>
+
+    </form>
+
+    <h6 data-th-text="${addingFailureMessage}" style="color : red"></h6>
+
+</div>
+
+<div th:replace="footer :: footer">
+</div>
+</body>
+</html>

@@ -42,6 +42,9 @@ public class LoginController {
 
             if(message.equals("zalogowano")){
                 session.setAttribute("loggedUser", userAcc);
+                UserAccount user = userAccountServ.getUserByEmail(userAcc.getUserEmail());
+                if(user.getWorkerCode().equals("5555"))
+                    return "/worker";
                 return "redirect:/";
             }
             if(message.equals("niezalogowano")){
