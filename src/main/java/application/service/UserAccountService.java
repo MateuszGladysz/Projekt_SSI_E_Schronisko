@@ -6,6 +6,8 @@ import application.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+
 
 @Service
 public class UserAccountService {
@@ -13,14 +15,25 @@ public class UserAccountService {
     @Autowired
     UserAccountRepository userAccountRepo;
 
-    public String addUser(UserAccount userAcc){
+    @Autowired
+    private HttpSession session;
 
-        if(userAcc != null) {
-            userAccountRepo.save(userAcc);
-            return "dodano";
-        }
+    public String addUser(UserAccount userAcc, String passwordToCheck){
 
-        return "nie dodano";
+
+            if(findUserByEmail(userAcc.getUserEmail()) == null){
+
+                if(passwordChangeValidation(userAcc.getUserPassword()
+                        ,passwordToCheck).equals("changePasswordGood")){
+
+                        userAccountRepo.save(userAcc);
+                        return "registrationGood";
+
+                }else return "noMatchPasswords";
+
+            } else return "emailAlreadyUsed";
+
+
     }
 
     public String loginUser(String userEmail, String userPassword){
@@ -32,13 +45,73 @@ public class UserAccountService {
             if(userAccountRepo.findOneByUserEmail(userEmail) != null){
                 UserAccount userToLogin = userAccountRepo.findOneByUserEmail(userEmail);
                 if(userToLogin.getUserPassword().equals(userPassword)){
-                    return "zalogowano";
-                } else return "niezalogowano";
-            }else return "brak konta z tym mailem";
+                    return "logged";
+                } else return "notLogged";
+            }else return "NoAccountWithThisEmail";
         }
+
+
+     public UserAccount findUserByEmail(String email){
+
+        UserAccount userAcc = userAccountRepo.findOneByUserEmail(email);
+
+        return userAcc;
+     }
+
+     public String editUserAccount(UserAccount userAcc, String newPassword, String newPassword2) {
+
+         UserAccount userFromSession = (UserAccount) session.getAttribute("loggedUser");
+
+         if (!userAcc.getUserFirstName().equals("")) userFromSession.setUserFirstName(userAcc.getUserFirstName());
+         if (!userAcc.getUserLastName().equals("")) userFromSession.setUserLastName(userAcc.getUserLastName());
+         if (!userAcc.getUserAddress().equals("")) userFromSession.setUserAddress(userAcc.getUserAddress());
+         if (!userAcc.getUserPostCode().equals("")) userFromSession.setUserPostCode(userAcc.getUserPostCode());
+         if (!userAcc.getUserCity().equals("")) userFromSession.setUserCity(userAcc.getUserCity());
+         if (!userAcc.getUserEmail().equals("")) userFromSession.setUserEmail(userAcc.getUserEmail());
+
+         if (!userAcc.getUserPassword().equals("") ) {
+             if (userAcc.getUserPassword().equals(userFromSession.getUserPassword())) {
+
+                 String message;
+                 message = passwordChangeValidation(newPassword, newPassword2);
+
+                 if (message.equals("changePasswordGood")) {
+                     userFromSession.setUserPassword(newPassword);
+                     session.setAttribute("loggedUser", userFromSession);
+
+                     userAccountRepo.save(userFromSession);
+
+                     return "changePasswordGood";
+                 }
+
+             } else {
+
+                 session.setAttribute("loggedUser", userFromSession);
+
+                 userAccountRepo.save(userFromSession);
+
+                 return "badCurrentPassword";
+             }
+         }
+            return "";
+     }
+
+
+     public String passwordChangeValidation(String password1, String password2){
+
+         if(password1.length() > 5 && password1.length() < 15 &&
+                 password2.length() > 5 && password2.length() < 15){
+
+              if (password1.equals(password2)) return "changePasswordGood";
+              else return "noMatchPasswords";
+
+         }else return "toShortPasswords";
+
+     }
 
     public UserAccount getUserByEmail(String email){
         return userAccountRepo.findOneByUserEmail(email);
     }
+
 
 }

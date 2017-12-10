@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
     <link rel="stylesheet" th:href="@{/home.css}" />
-    <link rel="stylesheet" th:href="@{/login1.css}" />
+    <link rel="stylesheet" th:href="@{/register1.css}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -21,45 +21,64 @@
 <div class="container">
 
     <form class="form-signin" method="post" accept-charset="utf-8" >
-        <h2 class="form-signin-heading">Rejestracja</h2>
 
+        <div class="container1">
 
-        <label for="userFirstName" class="sr-only">Imię</label>
-        <input type="text" id="userFirstName" class="form-control"
-               name ="userFirstName" placeholder="Imie" th:required="required"></input>
+            <h2 class="form-signin-heading">Twoje dane personalne</h2>
+            <label for="userFirstName" class="sr-only">Imię</label>
+            <input type="text" id="userFirstName" class="form-control"
+                   name ="userFirstName" placeholder="Imie" th:required="required"></input>
 
-        <label for="userLastName" class="sr-only">Nazwisko</label>
-        <input type="text" id="userLastName" class="form-control"
-               name ="userLastName" placeholder="Nazwisko" th:required="required"></input>
+            <label for="userLastName" class="sr-only">Nazwisko</label>
+            <input type="text" id="userLastName" class="form-control"
+                   name ="userLastName" placeholder="Nazwisko" th:required="required"></input>
 
-        <label for="userAddress" class="sr-only">Adres</label>
-        <input type="text" id="userAddress" class="form-control"
-               name ="userAddress" placeholder="Adres" th:required="required"></input>
+            <label for="userAddress" class="sr-only">Adres</label>
+            <input type="text" id="userAddress" class="form-control"
+                   name ="userAddress" placeholder="Adres" th:required="required"></input>
 
-        <label for="userPostCode" class="sr-only">Kod pocztowy</label>
-        <input type="text" id="userPostCode" class="form-control"
-               name ="userPostCode" placeholder="Kod pocztowy __-___" th:required="required"></input>
+            <label for="userPostCode" class="sr-only">Kod pocztowy</label>
+            <input type="text" id="userPostCode" class="form-control"
+                   name ="userPostCode" placeholder="Kod pocztowy __-___" th:required="required"></input>
 
-        <label for="userCity" class="sr-only">Miasto</label>
-        <input type="text" id="userCity" class="form-control"
-               name ="userCity" placeholder="Miasto" th:required="required"></input>
+            <label for="userCity" class="sr-only">Miasto</label>
+            <input type="text" id="userCity" class="form-control"
+                   name ="userCity" placeholder="Miasto" th:required="required"></input>
 
-        <label for="userPhone" class="sr-only">Telefon</label>
-        <input type="number" id="userPhone" class="form-control"
-               name ="userPhone" placeholder="Telefon" th:required="required"></input>
+            <label for="userPhone" class="sr-only">Telefon</label>
+            <input type="number" id="userPhone" class="form-control"
+                   name ="userPhone" placeholder="Telefon" th:required="required"></input>
+        </div>
+        <div class="container2">
 
-        <label for="workerCode" class="sr-only">Kod pracownika</label>
-        <input type="text" id="workerCode" class="form-control"
-               name ="workerCode" placeholder="Kod pracownika(tylko dla pracowników schroniska)"></input>
+            <h2 class="form-signin-heading">Twoje dane logowania</h2>
 
-        <label for="userEmail" class="sr-only">Email</label>
-        <input type="email" id="userEmail" class="form-control"
-               name ="userEmail" placeholder="E-mail" th:required="required"></input>
+            <h3 data-th-text="${registerMessage}" style="color: red"></h3>
 
-        <label for="userPassword" class="sr-only">Hasło</label>
-        <input type="password" id="userPassword" class="form-control"
-               name ="userPassword" placeholder="Hasło" th:required="required"></input>
-        <button class="btn btn-lg btn-dark btn-block" type="submit">Zarejstruj</button>
+            <label for="userEmail" class="sr-only">Email</label>
+            <input type="email" id="userEmail" class="form-control"
+                   name ="userEmail" placeholder="E-mail" th:required="required"></input>
+
+            <label for="userPassword" class="sr-only">Hasło</label>
+            <input type="password" id="userPassword" class="form-control"
+                   name ="userPassword" placeholder="Hasło" th:required="required"></input>
+
+            <label for="userPassword1" class="sr-only">Powtórz hasło</label>
+            <input type="password" id="userPassword1" class="form-control"
+                   name ="userPassword1" placeholder="Powtórz hasło" th:required="required"></input>
+        </div>
+
+        <div class="container3">
+            <h4 class="form-signin-heading">Tylko dla pracowników schroniska</h4>
+            <label for="workerCode" class="sr-only">Kod pracownika</label>
+            <input type="text" id="workerCode" class="form-control"
+                   name ="workerCode" placeholder="Kod pracownika(tylko dla pracowników schroniska)"></input>
+        </div>
+
+        <div class="containerButton">
+            <button class="btn btn-lg btn-dark btn-block" type="submit">Zarejstruj</button>
+        </div>
+
 
     </form>
 

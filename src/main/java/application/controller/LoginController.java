@@ -35,23 +35,25 @@ public class LoginController {
     public String submit(UserAccount userAcc, Map<String,Object> model){
 
         String message;
-
+        UserAccount userToSession;
         model.put("loginFailureMessage","");
         if(userAcc != null){
             message = userAccountServ.loginUser(userAcc.getUserEmail(),userAcc.getUserPassword());
 
-            if(message.equals("zalogowano")){
-                session.setAttribute("loggedUser", userAcc);
-                UserAccount user = userAccountServ.getUserByEmail(userAcc.getUserEmail());
-                if(user.getWorkerCode().equals("5555"))
+            userToSession = userAccountServ.findUserByEmail(userAcc.getUserEmail());
+            if(message.equals("logged")){
+                session.setAttribute("loggedUser", userToSession);
+               
+                if(userToSession.getWorkerCode().equals("5555"))
                     return "/worker";
+
                 return "redirect:/";
             }
-            if(message.equals("niezalogowano")){
+            if(message.equals("notLogged")){
                 model.put("loginFailureMessage","Błędny login lub hasło");
                 return "/login";
             }
-            if(message.equals("brak konta z tym mailem")){
+            if(message.equals("NoAccountWithThisEmail")){
                 model.put("loginFailureMessage","Brak konta o podanym adresie E-mail");
                 return "/login";
             }

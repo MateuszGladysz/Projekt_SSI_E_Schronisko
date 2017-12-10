@@ -53,6 +53,9 @@ public class HomeController {
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String register() {return "register"; }
 
+    @RequestMapping(value = "/account", method = {RequestMethod.GET})
+    public String account() {return "account"; }
+
     @RequestMapping(value = "/tips", method = {RequestMethod.GET})
     public String tips() {return "tips"; }
 
