@@ -39,9 +39,14 @@ public class LoginController {
         model.put("loginFailureMessage","");
         if(userAcc != null){
             message = userAccountServ.loginUser(userAcc.getUserEmail(),userAcc.getUserPassword());
+
             userToSession = userAccountServ.findUserByEmail(userAcc.getUserEmail());
             if(message.equals("logged")){
                 session.setAttribute("loggedUser", userToSession);
+               
+                if(userToSession.getWorkerCode().equals("5555"))
+                    return "/worker";
+
                 return "redirect:/";
             }
             if(message.equals("notLogged")){

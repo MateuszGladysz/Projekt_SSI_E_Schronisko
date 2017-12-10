@@ -50,6 +50,7 @@ public class UserAccountService {
             }else return "NoAccountWithThisEmail";
         }
 
+
      public UserAccount findUserByEmail(String email){
 
         UserAccount userAcc = userAccountRepo.findOneByUserEmail(email);
@@ -107,5 +108,10 @@ public class UserAccountService {
          }else return "toShortPasswords";
 
      }
+
+    public UserAccount getUserByEmail(String email){
+        return userAccountRepo.findOneByUserEmail(email);
+    }
+
 
 }
