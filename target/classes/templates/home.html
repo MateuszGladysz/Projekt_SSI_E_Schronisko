@@ -21,21 +21,15 @@
 
           <div class="row">
 
-              <div class="card">
-                  <img th:src="@{images/pies.jpg}" alt="Card image cap"/>
-                  <h1>Trampek</h1>
-                  <p class="card-text">Odznacza się silnym charakterem, dlatego wymaga konsekwencji  w wychowaniu. Jest zarazem psem inteligentnym i przy odpowiedniej motywacji ( smakołyki) szybko uczy sie nowych rzeczy. </p>
+
+              <div  class="card" th:each="animal: ${animals}">
+                  <img th:src="@{${'images/'+animal.photo}}" alt="Card image cap"/>
+                  <h1 data-th-text="${animal.name}"></h1>
+                  <p class="card-text" data-th-text="${animal.description}"></p>
+
               </div>
-              <div class="card">
-                  <img th:src="@{images/kot.jpg}" alt="Card image cap"/>
-                  <h1>Franciszek</h1>
-                  <p class="card-text">Gdy trafił do Schroniska, nie ufał ludziom, nie pozwalał się głaskać. Był prawdopodbnie kotem 'piwnicznym', który wcześniej nie miał zbyt wiele kontaktu z ludźmi. Na szczęście pozwolił się 'przekonać' i widać, że głaskanie sprawia mu przyjemność. Uwielbia drapanie pod brodą, polubił towarzystwo ludzi. Inne koty traktuje obojętnie</p>
-              </div>
-              <div class="card">
-                  <img th:src="@{images/sarna.jpg}" alt="Card image cap"/>
-                  <h1>Milena</h1>
-                  <p class="card-text">Ranna sarna przebywała w lecznicy po zderzeniu z samochodem 12 godzin, po tym czasie trafiła do naszego schroniska i zdobywa siły by powrócić na wolność. Jej ulubiona zabawa jest zabawa w chowanego z Trampkiem i Franciszkiem</p>
-              </div>
+
+
           </div>
       </div>
   </div>

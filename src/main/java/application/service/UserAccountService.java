@@ -18,98 +18,97 @@ public class UserAccountService {
     @Autowired
     private HttpSession session;
 
-    public String addUser(UserAccount userAcc, String passwordToCheck){
+    public String addUser(UserAccount userAcc, String passwordToCheck) {
 
 
-            if(findUserByEmail(userAcc.getUserEmail()) == null){
+        if (findUserByEmail(userAcc.getUserEmail()) == null) {
 
-                if(passwordChangeValidation(userAcc.getUserPassword()
-                        ,passwordToCheck).equals("changePasswordGood")){
+            if (passwordChangeValidation(userAcc.getUserPassword()
+                    , passwordToCheck).equals("changePasswordGood")) {
 
-                        userAccountRepo.save(userAcc);
-                        return "registrationGood";
+                userAccountRepo.save(userAcc);
+                return "registrationGood";
 
-                }else return "noMatchPasswords";
+            } else return "noMatchPasswords";
 
-            } else return "emailAlreadyUsed";
+        } else return "emailAlreadyUsed";
 
 
     }
 
-    public String loginUser(String userEmail, String userPassword){
+    public String loginUser(String userEmail, String userPassword) {
 
         System.out.println(userEmail);
         System.out.println(userPassword);
 
 
-            if(userAccountRepo.findOneByUserEmail(userEmail) != null){
-                UserAccount userToLogin = userAccountRepo.findOneByUserEmail(userEmail);
-                if(userToLogin.getUserPassword().equals(userPassword)){
-                    return "logged";
-                } else return "notLogged";
-            }else return "NoAccountWithThisEmail";
-        }
+        if (userAccountRepo.findOneByUserEmail(userEmail) != null) {
+            UserAccount userToLogin = userAccountRepo.findOneByUserEmail(userEmail);
+            if (userToLogin.getUserPassword().equals(userPassword)) {
+                return "logged";
+            } else return "notLogged";
+        } else return "NoAccountWithThisEmail";
+    }
 
 
-     public UserAccount findUserByEmail(String email){
+    public UserAccount findUserByEmail(String email) {
 
         UserAccount userAcc = userAccountRepo.findOneByUserEmail(email);
 
         return userAcc;
-     }
+    }
 
-     public String editUserAccount(UserAccount userAcc, String newPassword, String newPassword2) {
+    public String editUserAccount(UserAccount userAcc, String newPassword, String newPassword2) {
 
-         UserAccount userFromSession = (UserAccount) session.getAttribute("loggedUser");
+        UserAccount userFromSession = (UserAccount) session.getAttribute("loggedUser");
 
-         if (!userAcc.getUserFirstName().equals("")) userFromSession.setUserFirstName(userAcc.getUserFirstName());
-         if (!userAcc.getUserLastName().equals("")) userFromSession.setUserLastName(userAcc.getUserLastName());
-         if (!userAcc.getUserAddress().equals("")) userFromSession.setUserAddress(userAcc.getUserAddress());
-         if (!userAcc.getUserPostCode().equals("")) userFromSession.setUserPostCode(userAcc.getUserPostCode());
-         if (!userAcc.getUserCity().equals("")) userFromSession.setUserCity(userAcc.getUserCity());
-         if (!userAcc.getUserEmail().equals("")) userFromSession.setUserEmail(userAcc.getUserEmail());
+        if (!userAcc.getUserFirstName().equals("")) userFromSession.setUserFirstName(userAcc.getUserFirstName());
+        if (!userAcc.getUserLastName().equals("")) userFromSession.setUserLastName(userAcc.getUserLastName());
+        if (!userAcc.getUserAddress().equals("")) userFromSession.setUserAddress(userAcc.getUserAddress());
+        if (!userAcc.getUserPostCode().equals("")) userFromSession.setUserPostCode(userAcc.getUserPostCode());
+        if (!userAcc.getUserCity().equals("")) userFromSession.setUserCity(userAcc.getUserCity());
+        if (!userAcc.getUserEmail().equals("")) userFromSession.setUserEmail(userAcc.getUserEmail());
 
-         if (!userAcc.getUserPassword().equals("") ) {
-             if (userAcc.getUserPassword().equals(userFromSession.getUserPassword())) {
+        if (!userAcc.getUserPassword().equals("")) {
+            if (userAcc.getUserPassword().equals(userFromSession.getUserPassword())) {
 
-                 String message;
-                 message = passwordChangeValidation(newPassword, newPassword2);
+                String message;
+                message = passwordChangeValidation(newPassword, newPassword2);
 
-                 if (message.equals("changePasswordGood")) {
-                     userFromSession.setUserPassword(newPassword);
-                     session.setAttribute("loggedUser", userFromSession);
+                if (message.equals("changePasswordGood")) {
+                    userFromSession.setUserPassword(newPassword);
+                    session.setAttribute("loggedUser", userFromSession);
 
-                     userAccountRepo.save(userFromSession);
+                    userAccountRepo.save(userFromSession);
 
-                     return "changePasswordGood";
-                 }
+                    return "changePasswordGood";
+                }else return message;
 
-             } else {
+            } else {
 
-                 session.setAttribute("loggedUser", userFromSession);
+                return "badCurrentPassword";
+            }
+        }
 
-                 userAccountRepo.save(userFromSession);
-
-                 return "badCurrentPassword";
-             }
-         }
-            return "";
-     }
+        session.setAttribute("loggedUser", userFromSession);
+        userAccountRepo.save(userFromSession);
+        return "";
+    }
 
 
-     public String passwordChangeValidation(String password1, String password2){
+    public String passwordChangeValidation(String password1, String password2) {
 
-         if(password1.length() > 5 && password1.length() < 15 &&
-                 password2.length() > 5 && password2.length() < 15){
+        if (password1.length() > 5 && password1.length() < 15 &&
+                password2.length() > 5 && password2.length() < 15) {
 
-              if (password1.equals(password2)) return "changePasswordGood";
-              else return "noMatchPasswords";
+            if (password1.equals(password2)) return "changePasswordGood";
+            else return "noMatchPasswords";
 
-         }else return "toShortPasswords";
+        } else return "toShortPasswords";
 
-     }
+    }
 
-    public UserAccount getUserByEmail(String email){
+    public UserAccount getUserByEmail(String email) {
         return userAccountRepo.findOneByUserEmail(email);
     }
 

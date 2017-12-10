@@ -42,7 +42,6 @@ public class AccountController {
         message = userAccountServ.editUserAccount(userAcc, request.getParameter("userNewPassword"),
                 request.getParameter("userNewPassword2"));
 
-        System.out.println(userAcc.getUserPassword());
 
         if (message.equals("changePasswordGood")) {
 
