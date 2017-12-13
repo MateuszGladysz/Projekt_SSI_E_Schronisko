@@ -92,3 +92,19 @@ img {
 
 
 }
+
+slider{
+    width: 100%;
+    margin-left: 200px;
+}
+
+.carousel-inner{
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.item{
+    margin-left: 120px;
+    margin-right: 100px;
+
+}
