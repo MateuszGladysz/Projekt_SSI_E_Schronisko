@@ -1,6 +1,5 @@
 package application.model;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,39 +8,34 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "userAccount")
+@Table(
+        name = "userAccount"
+)
 public class UserAccount {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.AUTO
+    )
     private long id;
-
     @NotNull
     private String userFirstName;
-
     @NotNull
     private String userLastName;
-
     @NotNull
     private String userAddress;
-
     @NotNull
     private String userPostCode;
-
     @NotNull
     private String userCity;
-
     @NotNull
     private long userPhone;
-
     @NotNull
     private String workerCode;
-
     @NotNull
     private String userEmail;
-
     @NotNull
     private String userPassword;
+    private int balance;
 
     public UserAccount() {
     }
@@ -58,7 +52,7 @@ public class UserAccount {
     }
 
     public long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(long id) {
@@ -66,19 +60,19 @@ public class UserAccount {
     }
 
     public String getUserFirstName() {
-        return userFirstName;
+        return this.userFirstName;
     }
 
     public String getUserLastName() {
-        return userLastName;
+        return this.userLastName;
     }
 
     public String getUserEmail() {
-        return userEmail;
+        return this.userEmail;
     }
 
     public String getUserPassword() {
-        return userPassword;
+        return this.userPassword;
     }
 
     public void setUserFirstName(String userFirstName) {
@@ -98,23 +92,23 @@ public class UserAccount {
     }
 
     public String getUserAddress() {
-        return userAddress;
+        return this.userAddress;
     }
 
     public String getUserPostCode() {
-        return userPostCode;
+        return this.userPostCode;
     }
 
     public String getUserCity() {
-        return userCity;
+        return this.userCity;
     }
 
     public long getUserPhone() {
-        return userPhone;
+        return this.userPhone;
     }
 
     public String getWorkerCode() {
-        return workerCode;
+        return this.workerCode;
     }
 
     public void setUserAddress(String userAddress) {
@@ -135,5 +129,13 @@ public class UserAccount {
 
     public void setWorkerCode(String workerCode) {
         this.workerCode = workerCode;
+    }
+
+    public int getBalance() {
+        return this.balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 }
