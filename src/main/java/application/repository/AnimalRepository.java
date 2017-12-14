@@ -10,4 +10,6 @@ import java.util.List;
 public interface AnimalRepository extends CrudRepository<Animal, Long> {
 
    public List<Animal> findByType(String type);
+
+   Animal findById(long id);
 }

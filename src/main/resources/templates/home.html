@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" lang="pl-PL">
 <head>
     <title>E-schronisko</title>
     <meta charset="UTF-8" />
@@ -16,23 +16,104 @@
 
     </div>
 
-  <div class="album text-muted">
-      <div class="container">
+    <div class="slider">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
 
-          <div class="row">
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="album text-muted">
+                        <div class="container">
+                            <div class="row">
+                                <div class="card">
+                                    <img th:src="@{images/pies.jpg}" alt="Card image cap" style="width:320px;height:210px"/>
+                                    <h1>Trampek</h1>
+                                    <p class="card-text">Odznacza się silnym charakterem, dlatego wymaga konsekwencji  w wychowaniu. Jest zarazem psem inteligentnym i przy odpowiedniej motywacji ( smakołyki) szybko uczy sie nowych rzeczy. </p>
+                                </div>
+                                <div class="card">
+                                    <img th:src="@{images/kot.jpg}" alt="Card image cap" style="width:320px;height:210px"/>
+                                    <h1>Franciszek</h1>
+                                    <p class="card-text">Gdy trafił do Schroniska, nie ufał ludziom, nie pozwalał się głaskać. Był prawdopodbnie kotem 'piwnicznym', który wcześniej nie miał zbyt wiele kontaktu z ludźmi. Na szczęście pozwolił się 'przekonać' i widać, że głaskanie sprawia mu przyjemność. Uwielbia drapanie pod brodą, polubił towarzystwo ludzi. Inne koty traktuje obojętnie</p>
+                                </div>
+                                <div class="card">
+                                    <img th:src="@{images/sarna.jpg}" alt="Card image cap" style="width:320px;height:210px"/>
+                                    <h1>Milena</h1>
+                                    <p class="card-text">Ranna sarna przebywała w lecznicy po zderzeniu z samochodem 12 godzin, po tym czasie trafiła do naszego schroniska i zdobywa siły by powrócić na wolność. Jej ulubiona zabawa jest zabawa w chowanego z Trampkiem i Franciszkiem</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="album text-muted">
+                        <div class="container">
+                            <div class="row">
+                                <div class="card">
+                                    <img th:src="@{images/Ciapek.jpg}" alt="Card image cap" style="width:320px;height:210px"/>
+                                    <h1>Ciapek</h1>
+                                    <p class="card-text">Odznacza się silnym charakterem, dlatego wymaga konsekwencji  w wychowaniu. Jest zarazem psem inteligentnym i przy odpowiedniej motywacji ( smakołyki) szybko uczy sie nowych rzeczy. </p>
+                                </div>
+                                <div class="card">
+                                    <img th:src="@{images/sarna.jpg}" alt="Card image cap" style="width:320px;height:210px"/>
+                                    <h1>Milena</h1>
+                                    <p class="card-text">Ranna sarna przebywała w lecznicy po zderzeniu z samochodem 12 godzin, po tym czasie trafiła do naszego schroniska i zdobywa siły by powrócić na wolność. Jej ulubiona zabawa jest zabawa w chowanego z Trampkiem i Franciszkiem</p>
+                                </div>
+                                <div class="card">
+                                    <img th:src="@{images/Szarak.jpg}" alt="Card image cap" style="width:320px;height:210px"/>
+                                    <h1>Franciszek</h1>
+                                    <p class="card-text">Gdy trafił do Schroniska, nie ufał ludziom, nie pozwalał się głaskać. Był prawdopodbnie kotem 'piwnicznym', który wcześniej nie miał zbyt wiele kontaktu z ludźmi. Na szczęście pozwolił się 'przekonać' i widać, że głaskanie sprawia mu przyjemność. Uwielbia drapanie pod brodą, polubił towarzystwo ludzi. Inne koty traktuje obojętnie</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="album text-muted">
+                        <div class="container">
+                            <div class="row">
+                                <div class="card">
+                                    <img th:src="@{images/stefan.jpg}" alt="Card image cap" style="width:320px;height:210px"/>
+                                    <h1>Stefan</h1>
+                                    <p class="card-text">Uwielba zabawę jest bardzo aktywny</p>
+                                </div>
+                                <div class="card">
+                                    <img th:src="@{images/pies.jpg}" alt="Card image cap" style="width:320px;height:210px"/>
+                                    <h1>Trampek</h1>
+                                    <p class="card-text">Odznacza się silnym charakterem, dlatego wymaga konsekwencji  w wychowaniu. Jest zarazem psem inteligentnym i przy odpowiedniej motywacji ( smakołyki) szybko uczy sie nowych rzeczy. </p>
+                                </div>
+                                <div class="card">
+                                    <img th:src="@{images/Gruby.jpg}" alt="Card image cap" style="width:320px;height:210px"/>
+                                    <h1>Franciszek</h1>
+                                    <p class="card-text">Gdy trafił do Schroniska, nie ufał ludziom, nie pozwalał się głaskać. Był prawdopodbnie kotem 'piwnicznym', który wcześniej nie miał zbyt wiele kontaktu z ludźmi. Na szczęście pozwolił się 'przekonać' i widać, że głaskanie sprawia mu przyjemność. Uwielbia drapanie pod brodą, polubił towarzystwo ludzi. Inne koty traktuje obojętnie</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div>
 
 
-              <div  class="card" th:each="animal: ${animals}">
-                  <img th:src="@{${'images/'+animal.photo}}" alt="Card image cap"/>
-                  <h1 data-th-text="${animal.name}"></h1>
-                  <p class="card-text" data-th-text="${animal.description}"></p>
 
-              </div>
-
-
-          </div>
-      </div>
-  </div>
 
     <div th:replace="footer :: footer">
     </div>

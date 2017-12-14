@@ -28,8 +28,12 @@
                name ="name" placeholder="Imie" th:required="required"></input>
 
         <label for="type" class="sr-only">Typ zwierzaka</label>
-        <input type="text" id="type" class="form-control"
-               name ="type" placeholder="Typ zwierzaka" th:required="required"></input>
+        <select type="text" id="type" class="form-control" name="type"
+                th:required="required">
+            <option value="Psy">Psy</option>
+            <option value="Koty">Koty</option>
+            <option value="Inne">Inne</option>
+        </select>
 
         <label for="description" class="sr-only">Opis</label>
         <textarea type="text" id="description" class="form-control"

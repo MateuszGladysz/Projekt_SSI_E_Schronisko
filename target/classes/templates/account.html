@@ -54,6 +54,8 @@
             <input type="email" id="userEmail" class="form-control"
                    name ="userEmail" th:placeholder="${session.loggedUser.getUserEmail()}" ></input>
 
+            <h4>Stan konta: <h4 data-th-text="${session.loggedUser.getBalance()}"/> zł </h4>
+
             <button class="btn btn-lg btn-dark btn-block" type="submit">Aktualizuj</button>
         </div>
 

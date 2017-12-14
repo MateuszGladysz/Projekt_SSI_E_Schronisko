@@ -1,11 +1,14 @@
 package application.service;
 
 import application.model.Animal;
+import application.model.UserAccount;
 import application.repository.AnimalRepository;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import application.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class AnimalService {
     @Autowired
     AnimalRepository animalRepository;
+
+    @Autowired
+    UserAccountRepository userAccountRepository;
 
     public AnimalService() {
     }
@@ -70,7 +76,14 @@ public class AnimalService {
     }
 
 
-    public void addDonation(String amount, String animalId, long id) {
+    public void addDonation(String amount, long animalId, UserAccount user) {
+        Animal animal = animalRepository.findById(animalId);
+        user.setBalance((user.getBalance() - Integer.parseInt(amount)));
+        animal.setDonation((animal.getDonation() + Integer.parseInt(amount)));
+
+        animalRepository.save(animal);
+        userAccountRepository.save(user);
+
 
     }
 

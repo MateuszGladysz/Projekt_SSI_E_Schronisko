@@ -93,12 +93,12 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/addDonation.do", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String addDonation(@RequestParam("amount") String amount, @RequestParam("animalId") String animalId){
+    public String addDonation(@RequestParam("amount") String amount, @RequestParam("animalId") long animalId){
         System.out.println("Dodaje donacje: " + amount + "  " + animalId);
         UserAccount user = (UserAccount) session.getAttribute("loggedUser");
-        animalService.addDonation(amount, animalId,user.getId() );
+        animalService.addDonation(amount, animalId,user );
 
-        return "psy";
+        return "redirect:/psy";
     }
 
 }

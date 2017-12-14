@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" lang="pl-PL">
 <head>
     <title>Psy</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
     <link rel="stylesheet" th:href="@{/home.css}" />
     <link rel="stylesheet" th:href="@{/animal_list.css}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -16,8 +17,8 @@
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;overflow:hidden;word-break:normal;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
 .tg .tg-baqh{text-align:center;vertical-align:top}
-.tg .tg-wrg0{font-size:26px;text-align:center;vertical-align:top}
-.tg .tg-qgsu{font-size:18px;vertical-align:top}
+.tg .tg-wrg0{font-size:28px;text-align:left;vertical-align:top}
+.tg .tg-qgsu{font-size:16px;vertical-align:top}
 </style>
 <body>
 <div th:replace="header :: header">
@@ -30,11 +31,12 @@
     </div>
     <div class="row">
 
-        <div class="image-block col-sm-4" data-toggle="modal" data-target="#myModal" th:attr="data-id=${animal.name}" th:each="animal: ${animals}" varStatus="loop" th:value="${animal.name}" style="background: url(images/${animal.photo}.jpg) no-repeat center top;background-size:cover;">
+        <div class="image-block col-sm-4" data-toggle="modal" data-target="#myModal" th:attr="data-id=${animal.name}" th:each="animal: ${animals}" varStatus="loop" th:value="${animal.name}" style="background: url(images/${animal.photo}.jpg) no-repeat center top;background-size:cover; height:240px">
             <p data-th-text="${animal.name}"> </p>
             <input type="hidden" class="animalName" th:value="${animal.name}"/>
             <input type="hidden" class="animalDescription" th:value="${animal.description}"/>
             <input type="hidden" class="animalIDs" th:value="${animal.id}"/>
+            <input type="hidden" class="animalBalance" th:value="${animal.donation}"/>
         </div>
 
 
@@ -60,13 +62,14 @@
                         <th class="tg-wrg0" colspan="2"><p name="animalDesc" id="animalName"/> </th>
                     </tr>
                     <tr>
-                        <td class="tg-baqh"><input type="image" name="animalImage" id="animalImage" value=""  style="width:200px;height:150px"/></td>
+                        <td class="tg-baqh"><input type="image" name="animalImage" id="animalImage" value=""  style="width:280px;height:180px"/></td>
                         <td class="tg-qgsu"><p name="animalDesc" id="animalDesc"/></td>
                     </tr>
                     <tr>
                         <td class="tg-qgsu" colspan="2">
-                            <input type="number" min="1" name="animalDonationAmount" id="animalDonationAmount"/>
-                            <input type="submit" value="Donacja!" name="animalDonationButton" id="animalDonationButton"/>
+                            <p name="animalBalance" id="animalBalance"/>
+                            <input type="number" class="form-control" min="1" name="animalDonationAmount" id="animalDonationAmount"/>
+                            <input type="submit" class="btn btn-lg btn-dark btn-block" value="Donacja!" name="animalDonationButton" id="animalDonationButton"/>
 
                         </td>
                     </tr>
@@ -91,6 +94,7 @@
     var animalName = document.getElementsByClassName("animalName");
     var animalDescription = document.getElementsByClassName("animalDescription");
     var animalIDs = document.getElementsByClassName("animalIDs");
+    var animalBalance = document.getElementsByClassName("animalBalance");
 
     var img = 'images/bruno.jpg';
     function changeBackground(aId){
@@ -106,6 +110,7 @@
             buttons[i].style.backgroundImage = 'url("' + img + '")';
             var someVar;
 
+
             someVar = i;
 
             buttons[i].addEventListener("click", function(){
@@ -114,6 +119,8 @@
                     $(".modal-body #animalImage").attr('src',img);
                     $(".modal-body #animalDesc").text(animalDescription[someVar].value);
                     $(".modal-body #animalName").text(animalName[someVar].value);
+                    $(".modal-body #animalBalance").text('Donacje: ' + animalBalance[someVar].value + 'zł');
+
                     $(".modal-body #animalDonationButton").click(function() {
                       console.log("donacja " + $(".modal-body #animalDonationAmount").val() + " id:" + animalIDs[someVar].value);
                       $.ajax({
